@@ -1,4 +1,4 @@
-export class HttpResp<T = any> {
+export class HttpResp<T = unknown> {
   constructor(
     public data: T,
     public status: number = 200,
