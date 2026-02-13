@@ -14,6 +14,7 @@ export * from './compiler/storage-registry';
 export * from './compiler/cookbook';
 export * from './compiler/lazy';
 export * from './compiler/flatbuffers';
+export * from './compiler/swc';
 export * from './middleware/inline';
 export * from './events/webhook';
 export * from './cli/migrate';
