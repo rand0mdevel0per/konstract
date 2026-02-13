@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { deploy } from './deploy.js';
 import { scaffoldProject } from './init.js';
+import { createMigration } from './migrate.js';
 import { execSync } from 'child_process';
 
 const args = process.argv.slice(2);
@@ -22,6 +23,7 @@ function printHelp(): void {
 Usage:
   kontract init <name> [--hyperdrive]     Create a new project
   kontract deploy [options]               Build and deploy to Cloudflare
+  kontract migrate create <name>          Create a new migration file
 
 Deploy options:
   --env <name>          Target environment (production, staging)
@@ -84,6 +86,22 @@ async function main(): Promise<void> {
       skipChecks: flag('skip-checks'),
     });
     return;
+  }
+
+  if (command === 'migrate') {
+    const sub = args[1];
+    if (sub === 'create') {
+      const name = args[2];
+      if (!name) {
+        console.error('Usage: kontract migrate create <migration-name>');
+        process.exit(1);
+      }
+      const result = createMigration('.', name);
+      console.log(`Created migration v${result.version}: ${result.path}`);
+      return;
+    }
+    console.error('Usage: kontract migrate create <name>');
+    process.exit(1);
   }
 
   console.error(`Unknown command: ${command}`);
