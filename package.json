@@ -1,11 +1,17 @@
 {
-  "name": "kontract",
+  "name": "@rand0mdevel0per/kontract",
   "version": "0.1.0",
   "description": "Serverless full-stack TypeScript framework with minimal database privileges",
   "license": "MIT",
   "type": "module",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
   "bin": {
     "kontract": "dist/src/cli/bin.js"
   },
@@ -14,11 +20,26 @@
     "README.md",
     "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rand0mdevel0per/kontract.git"
+  },
+  "homepage": "https://github.com/rand0mdevel0per/kontract#readme",
+  "keywords": [
+    "serverless",
+    "typescript",
+    "cloudflare-workers",
+    "full-stack",
+    "framework",
+    "postgresql",
+    "e2e-encryption"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint . --ext .ts",
     "test": "vitest --coverage --run",
+    "prepublishOnly": "npm run build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"

@@ -28,7 +28,7 @@ export function generateProjectFiles(name: string, hyperdrive: boolean): InitFil
         'db:init': 'psql $DATABASE_URL -f sql/init.sql',
       },
       dependencies: {
-        kontract: '^0.1.0',
+        kontract: 'npm:@rand0mdevel0per/kontract@^0.1.0',
       },
       devDependencies: {
         '@cloudflare/workers-types': '^4.20241230.0',

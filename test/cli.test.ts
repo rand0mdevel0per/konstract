@@ -39,7 +39,7 @@ describe('deploy - checkPrerequisites', () => {
 
   it('passes with valid project structure', () => {
     writeFileSync(join(TMP, 'wrangler.toml'), 'name = "test"');
-    writeFileSync(join(TMP, 'package.json'), '{"dependencies":{"kontract":"^0.1.0"}}');
+    writeFileSync(join(TMP, 'package.json'), '{"dependencies":{"@rand0mdevel0per/kontract":"^0.1.0"}}');
     const result = checkPrerequisites(TMP);
     expect(result.errors.filter((e) => !e.includes('wrangler not found'))).toEqual([]);
     expect(result.warnings).toEqual([]);

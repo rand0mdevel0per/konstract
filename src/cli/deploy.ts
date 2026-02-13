@@ -30,7 +30,8 @@ export function checkPrerequisites(cwd: string): DeployCheckResult {
     errors.push('package.json not found.');
   } else {
     const pkg = JSON.parse(readFileSync(pkgJson, 'utf-8'));
-    if (!pkg.dependencies?.kontract && !pkg.devDependencies?.kontract) {
+    if (!pkg.dependencies?.kontract && !pkg.dependencies?.['@rand0mdevel0per/kontract'] &&
+        !pkg.devDependencies?.kontract && !pkg.devDependencies?.['@rand0mdevel0per/kontract']) {
       warnings.push('kontract is not listed in dependencies.');
     }
   }
